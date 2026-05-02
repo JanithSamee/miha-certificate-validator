@@ -7,10 +7,11 @@ const sqlite3 = require("sqlite3").verbose(); // Import SQLite
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const ORIGIN = process.env.ORIGIN || "*";
 const RATE = process.env.RATE || 5;
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: { ORIGIN } }));
 app.use(express.json());
 
 // Connect to the SQLite database
